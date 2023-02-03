@@ -1,0 +1,49 @@
+/* Answer to question "From the two most commonly appearing regions, which is the latest datasource?" */
+WITH
+	TOP_2_REGION AS (
+	SELECT
+		REGION_ID,
+		COUNT(*)
+	FROM
+		WF_TRIPS WF
+	GROUP BY
+		REGION_ID
+	LIMIT 2)
+
+
+SELECT 
+	DATASOURCE
+FROM (
+	SELECT
+		DATASOURCE,
+		MAX(TRIP_DATETIME)
+	FROM
+		WF_TRIPS WF
+		INNER JOIN WD_DATASOURCE DS ON
+			WF.DATASOURCE_ID = DS.DATASOURCE_ID
+	WHERE
+		REGION_ID IN (SELECT REGION_ID FROM TOP_2_REGION)
+	GROUP BY
+		DATASOURCE
+	ORDER BY
+		2 DESC
+	LIMIT 1) A;
+    
+/* Answer to question "What regions has the "cheap_mobile" datasource appeared in?" */
+
+SELECT DISTINCT
+	REGION
+FROM
+	WF_TRIPS WF
+    INNER JOIN 
+		WD_REGION RG ON
+			WF.REGION_ID = RG.REGION_ID
+WHERE
+	DATASOURCE_ID IN (
+		SELECT
+			DATASOURCE_ID
+		FROM
+			WD_DATASOURCE
+		WHERE
+			DATASOURCE = 'cheap_mobile')
+	
