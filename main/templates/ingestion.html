@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css')}}">
+    <title>Ingestion</title>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var output = document.getElementById('output');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '{{ url_for('stream_ingest') }}', true);
+        xhr.send();
+        setInterval(function() {
+          output.textContent = xhr.responseText;
+        }, 500);
+      });
+    </script>
+</head>
+<body>
+	<div class="row">
+      <h2 align="center">Ingestion Status</h2>
+      <div class="logging_window">
+        <pre id="output"></pre>
+      </div>
+    </div>
+	<div class="text-center">
+		<form method="post">
+			<button type="submit" name="start_ingest">Start Ingestion</button>
+		</form>
+		<p>
+		<form action="http://127.0.0.1:8000/">
+			<button type="submit" name="home">Back to Home</button>
+		</form>
+	</div>
+</body>
+</html>
