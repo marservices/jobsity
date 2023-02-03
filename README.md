@@ -48,6 +48,11 @@ For the execution of this project some applications are needed:
 8. Now that the database is filled up, you can execute the reports. There's two reports:
 	- By Region: the default value is 'all', that gets all the regions, but you can put different regions separated by comma.
 	- By coordinates: selects coordinates that represents a bounding box. For example there are default values in the report main page.
-	
-	
+
+## And with big files?
+
+For testing the solution for big files, I made a file of trips with about 10 million rows. You can see that the ingestion tooks around 30 minutes. 
+
 ![alt text](images/million_ingest.png)
+
+This time of execution was obtained on the ingestion in my own notebook. So, if we scale the solution for cloud/on-premises servers it'll easily works with higher loads, 100 million rows or more!
