@@ -48,3 +48,6 @@ For the execution of this project some applications are needed:
 8. Now that the database is filled up, you can execute the reports. There's two reports:
 	- By Region: the default value is 'all', that gets all the regions, but you can put different regions separated by comma.
 	- By coordinates: selects coordinates that represents a bounding box. For example there are default values in the report main page.
+	
+	
+![alt text](https://github.com/marservices/jobsity/images/million_ingest.jpg?raw=true)
