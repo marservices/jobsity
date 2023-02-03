@@ -50,4 +50,4 @@ For the execution of this project some applications are needed:
 	- By coordinates: selects coordinates that represents a bounding box. For example there are default values in the report main page.
 	
 	
-![alt text](https://github.com/marservices/jobsity/images/million_ingest.png?raw=true)
+![alt text](images/million_ingest.png)
